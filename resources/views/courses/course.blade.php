@@ -70,12 +70,12 @@
                 <form action="{{route('course.delete', $course->id)}}" class="ml-auto like" method="POST">
                     {{ csrf_field() }}
                     <span class="like">15</span>
-                    <button type="submit" class="btn btn-sm btn-primary like">Add to favorites</button>
+                    <button type="submit" class="btn btn-sm btn-light like">Add to favorites</button>
                 </form>
                 <form action="{{route('course.delete', $course->id)}}" class="like" method="POST">
                     {{ csrf_field() }}
                     <span class="like">15</span>
-                    <button type="submit" class="btn btn-sm btn-primary like">Like</button>
+                    <button type="submit" class="btn btn-sm btn-light like">Like</button>
                 </form>
                 @endif
                 @endif
