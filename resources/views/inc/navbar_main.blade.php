@@ -25,11 +25,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                 </li>
-                @if(Auth::user()->roles->first()->name=='Teacher')
-                <li class="nav-item">
-                    <a class="nav-link" href="/courses/create">{{ __('Create Course') }}</a>
-                </li>
-                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -20,10 +20,6 @@
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <td>Role:</td>
-                    <td style="color:green">{{$user->roles->first()->name}}</td>
-                </tr>
-                <tr>
                     <td>First Name:</td>
                     <td style="color:green">{{$user->first_name}}</td>
                 </tr>
@@ -36,20 +32,8 @@
                     <td style="color:green">{{$user->last_name}}</td>
                 </tr>
                 <tr>
-                    <td>Email Address:</td>
-                    <td style="color:green">{{$user->email}}</td>
-                </tr>
-                <tr>
-                    <td>Phone Number:</td>
-                    <td style="color:green">{{$user->phone}}</td>
-                </tr>
-                <tr>
-                    <td>University:</td>
-                    <td style="color:green">{{$user->university}}</td>
-                </tr>
-                <tr>
-                    <td>Department:</td>
-                    <td style="color:green">{{$user->department}}</td>
+                    <td>ID Number:</td>
+                    <td style="color:green">{{$user->user_id}}</td>
                 </tr>
             </tbody>
         </table>

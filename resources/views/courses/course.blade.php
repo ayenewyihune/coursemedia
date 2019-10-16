@@ -161,12 +161,13 @@
             <form action="{{route('favorite.store', $course->id)}}" class="ml-auto like" method="POST">
                 {{ csrf_field() }}
                 <span class="like">{{$favors_count}}</span>
-                <button type="submit" class="btn btn-sm btn-primary like">{{$favorite_text}}</button>
+                <button type="submit" class="btn btn-sm btn-light like">{{$favorite_text}}</button>
             </form>
             <form action="{{route('like.store', $course->id)}}" class="like" method="POST">
                 {{ csrf_field() }}
                 <span class="like">{{$likes_count}}</span>
-                <button type="submit" class="btn btn-sm btn-primary like">{{$like_text}}</button>
+                <button type="submit" class="btn btn-primary" type="submit" id="add"><span class="glyphicon glyphicon-plus"></span> {{$like_text}}</button>
+                
             </form>
             @endif
             @endif

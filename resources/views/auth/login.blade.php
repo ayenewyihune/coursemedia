@@ -1,21 +1,8 @@
 @extends('layouts.app')
 
-@section('css')
-    <style>
-        .jumbotron {
-            padding: 5px;
-        }
-    </style>
-@endsection
-
 @section('content')
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-4">Not member yet?</h1>
-        <p><a class="btn btn-primary" href="/register" role="button">Register here</a></p>
-    </div>
-</div>
 <div class="container py-2">
+    <br><br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -26,17 +13,16 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email"
-                                class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <label for="user_id" class="col-sm-4 col-form-label text-md-right">ID</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email"
-                                    class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                    name="email" value="{{ old('email') }}" required>
+                                <input id="user_id" type="user_id"
+                                    class="form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="user_id"
+                                    value="{{ old('user_id') }}" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('user_id'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong>{{ $errors->first('user_id') }}</strong>
                                 </span>
                                 @endif
                             </div>
@@ -56,19 +42,6 @@
                                     <strong>{{ $errors->first('password') }}</strong>
                                 </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                        {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
                             </div>
                         </div>
 

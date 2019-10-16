@@ -16,34 +16,19 @@
 
     <!-- Content Row -->
     <div class="row">
-        @foreach ($courses as $course)
-        <div class="col-lg-4 col-sm-6 portfolio-item" id="indexProj2" style="opacity:0;">
-            <div class="card h-100">
-                <a href="{{ route('course.show', [$course->id, $chapter_number]) }}">
-                    <img class="card-img-top" style="height:200px"
-                        src="{{asset("storage/courses/course_images/".$course->course_image)}}" alt="course image">
-                </a>
-                <div class="card-body">
-                    <a href="{{ route('course.show', [$course->id, $chapter_number]) }}">
-                        <h4 class="card-title display-4" style="font-size: 25px !important">{{ $course->course_title }}
-                        </h4>
-                    </a>
-                    <small>{{ $course->course_description }}</small>
-                </div>
-                <div class="card-footer" style="padding:2%; color:gray;">
-                    <div class="row">
-                        <div class="col-6">
-                            <small>{{$course->user->first_name}} ({{$course->user->university}})</small>
-                        </div>
-                        <div class="col-6 text-center">
-                            <small>{{$course->likes('course_id', $course->id)->count()}} like(s)</small>
-                            <small>{{$course->favorites('course_id', $course->id)->count()}} favor(s)</small>
-                        </div>
+        <div class="col-lg-8 offset-md-2">
+            <br><br><br><br>
+            <div class="jumbotron p-3">
+                <div class="container">
+                    <h2 class="display-4 text-center mb-4">Welcome to Coursemedia, an online platform to share
+                        courses.</h2>
+                    <div class="text-center">
+                        <a class="btn btn-primary mr-2" href="/login" role="button">Login here</a>
+                        <a class="btn btn-primary" href="/register" role="button">Register</a>
                     </div>
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
     <!-- /.row -->
 

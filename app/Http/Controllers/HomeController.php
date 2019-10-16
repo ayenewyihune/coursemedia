@@ -73,18 +73,12 @@ class HomeController extends Controller
             'first_name' => 'required|string|max:15',
             'middle_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:255',
-            'university' => 'required|string|max:255',
-            'department' => 'required|string|max:255',
         ]);
 
         $user = User::find($id);
         $user->first_name = $request->input('first_name');
         $user->middle_name = $request->input('middle_name');
         $user->last_name = $request->input('last_name');
-        $user->phone = $request->input('phone');
-        $user->university = $request->input('university');
-        $user->department = $request->input('department');
         $user->save();
 
         return redirect('/dashboard')->with('success', 'Details updated successfully');
@@ -197,7 +191,7 @@ class HomeController extends Controller
         return view('courses.create_chapter')->with('course_id', $course_id);
     }
 
-    // This will update a chapter
+    // This will store a chapter
     public function store_chapter(Request $request, $course_id){
         $chapter_number_check = Chapter::where(['course_id'=>$course_id,'chapter_number'=>$request->input('chapter_number')])->get()->first();
         if ($chapter_number_check != null) {
