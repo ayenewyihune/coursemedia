@@ -8,28 +8,6 @@
             <hr>
             <form action="/courses/store" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="title">Course Category</label>
-                    <div>
-                        <select id="course_category"
-                            class="form-control{{ $errors->has('course_category') ? ' is-invalid' : '' }}"
-                            name="course_category" value="{{ old('course_category') }}" required>
-                            <option></option>
-                            <option value="Construction Technology and Management">Construction Technology and
-                                Management</option>
-                            <option value="Geotechnical Engineering">Geotechnical Engineering</option>
-                            <option value="Hydraulic Engineering and Related">Hydraulic Engineering and Related</option>
-                            <option value="Road and Transport Engineering">Road and Transport Engineering</option>
-                            <option value="Structural Engineering">Structural Engineering</option>
-                        </select>
-
-                        @if ($errors->has('course_category'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('course_category') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <label for="title">Course Title</label>

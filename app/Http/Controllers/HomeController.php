@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\User;
 use App\Course;
-use App\CourseCategory;
 use App\Chapter;
-use App\Like;
-use App\Favorite;
 
 class HomeController extends Controller
 {
@@ -37,13 +34,13 @@ class HomeController extends Controller
         return view('dashboard.details')->with('user', $user);
     }
 
-    // This will display the list of favorite courses
-    public function favorites()
+    // This will display the list of users courses
+    public function courses()
     {
-        $favorites = Favorite::where('user_id', Auth::id())->take(16)->inRandomOrder()->get();
+        $courses = Auth::user()->with('courses')->get();
         $chapter_number = 1;
-        return view('dashboard.favorites')->with([
-            'favorites'=> $favorites,
+        return view('dashboard.courses')->with([
+            'courses'=> $courses,
             'chapter_number'=> $chapter_number
         ]);
     }
@@ -66,7 +63,7 @@ class HomeController extends Controller
         return view('dashboard.edit')->with('user', $user);
     }
 
-    // This will desplay the list of favorite courses
+    // This will update the users info
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -91,29 +88,11 @@ class HomeController extends Controller
     public function show_course($course_id, $chapter_number){
         $chapters = Chapter::where('course_id', $course_id)->get();
         $course = Course::find($course_id);
-        $current_chapter = Chapter::where(['course_id'=>$course_id, 'chapter_number'=>$chapter_number])->get()->first();
-        $likes_count = Like::where('course_id', $course_id)->get()->count();
-        $check_liked = Like::where(['user_id'=>Auth::id(), 'course_id'=>$course_id])->get()->first();
-        if ($check_liked != null) {
-            $like_text = 'Unlike';
-        } else {
-            $like_text = 'Like';
-        }
-        $favors_count = Favorite::where('course_id', $course_id)->get()->count();
-        $check_favor = Favorite::where(['user_id'=>Auth::id(), 'course_id'=>$course_id])->get()->first();
-        if ($check_favor != null) {
-            $favorite_text = 'Remove from favorites';
-        } else {
-            $favorite_text = 'Add to favorites';
-        }
+        $current_chapter = Chapter::where(['course_id'=>$course_id, 'chapter_number'=>$chapter_number])->get()->first(); 
         return view('courses.course')->with([
             'course'=> $course,
             'chapters'=> $chapters,
             'current_chapter'=> $current_chapter,
-            'likes_count'=> $likes_count,
-            'favors_count'=> $favors_count,
-            'like_text'=> $like_text,
-            'favorite_text'=> $favorite_text
         ]);
     }
 
@@ -126,7 +105,6 @@ class HomeController extends Controller
     public function store_course(Request $request)
     {
         $this->validate($request, [
-            'course_category' => 'required|string|max:255',
             'course_title' => 'required|string|max:255',
             'course_image' => 'required|image|max:1999',
             'course_description' => 'required|string|max:175',
@@ -134,8 +112,6 @@ class HomeController extends Controller
 
         $course = new Course();
         $course->user_id = Auth::id();
-        $course_category = CourseCategory::where('course_category', $request->input('course_category'))->get()->first();
-        $course->course_category_id = $course_category->id;
         $course->course_title = $request->input('course_title');
         $course->course_image = '';
         $course->course_description = $request->input('course_description');

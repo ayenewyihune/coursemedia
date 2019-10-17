@@ -16,7 +16,7 @@ Auth::routes();//['verify' => true]
 
 Route::prefix('/dashboard')->group(function() {
   Route::get('/', 'HomeController@index')->name('dashboard');//->middleware('verified');
-  Route::get('/favorites', 'HomeController@favorites');//->middleware('verified');
+  Route::get('/courses', 'HomeController@courses');//->middleware('verified');
   Route::get('/my-courses', 'HomeController@my_courses');//->middleware('verified');
   Route::get('/{id}/edit', 'HomeController@edit')->name('member.edit');//->middleware('verified');
   Route::put('/{id}/update', 'HomeController@update')->name('member.update');//->middleware('verified');

@@ -23,8 +23,8 @@
                     <h2 class="display-4 text-center mb-4">Welcome to Coursemedia, an online platform to share
                         courses.</h2>
                     <div class="text-center">
-                        <a class="btn btn-primary mr-2" href="/login" role="button">Login here</a>
-                        <a class="btn btn-primary" href="/register" role="button">Register</a>
+                        <a class="btn btn-outline-primary mr-2" href="/login" role="button">Login here</a>
+                        <a class="btn btn-outline-primary" href="/register" role="button">Register</a>
                     </div>
                 </div>
             </div>
